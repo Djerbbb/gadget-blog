@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Каталог - Гаджет Блог</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <style>
+        body {
+            background-color: #121212;
+            color: #e0e0e0;
+            font-family: 'Arial', sans-serif;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        .navbar {
+            background-color: #1c2526;
+            padding: 10px 0;
+            position: relative;
+        }
+        .navbar-brand {
+            color: #ffffff;
+            font-size: 2.5rem;
+            font-family: 'Arial', sans-serif;
+            text-align: center;
+        }
+        .navbar-brand:hover {
+            color: #ffffff;
+            text-decoration: none;
+        }
+        .navbar-nav {
+            justify-content: center;
+        }
+        .nav-link {
+            color: #ffffff;
+            font-size: 1.1rem;
+            margin: 0 15px;
+            text-transform: uppercase;
+        }
+        .nav-link:hover {
+            color: #bbbbbb;
+        }
+        .section-bg {
+            background-color: #1e1e1e;
+            padding: 30px;
+            border-radius: 15px;
+            margin-bottom: 20px;
+            border-left: 5px solid #ffc107;
+        }
+        .card {
+            background-color: #2c2c2c;
+            border: none;
+            border-radius: 15px;
+            color: #e0e0e0;
+        }
+        .card-img-top {
+            border-top-left-radius: 15px;
+            border-top-right-radius: 15px;
+            height: 200px;
+            width: 100%;
+            object-fit: cover;
+        }
+        .btn {
+            border-radius: 20px;
+            background-color: #ffc107;
+            border-color: #ffc107;
+            color: #121212;
+        }
+        .btn:hover {
+            background-color: #ffca2c;
+            border-color: #ffca2c;
+        }
+        .form-control {
+            background-color: #333333;
+            border: none;
+            color: #e0e0e0;
+            border-radius: 10px;
+        }
+        .form-control::placeholder {
+            color: #bbbbbb;
+        }
+        .footer {
+            background-color: #1e1e1e;
+            padding: 20px 0;
+            text-align: center;
+            margin-top: auto;
+        }
+        .pagination .page-link {
+            background-color: #2c2c2c;
+            color: #e0e0e0;
+            border: none;
+        }
+        .pagination .page-item.active .page-link {
+            background-color: #ffc107;
+            color: #121212;
+        }
+    </style>
+</head>
+<body>
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg">
+    <div class="container d-flex flex-column align-items-center">
+        <span class="navbar-brand mb-3">Гаджет Блог</span>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="index.html">Главная</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="catalog.html">Каталог</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="contacts.html">Контакты</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<!-- Catalog Content -->
+<div class="container mt-5">
+    <div class="row mb-4">
+        <div class="col-md-6">
+            <input type="text" class="form-control" placeholder="Поиск">
+        </div>
+        <div class="col-md-6">
+            <select class="form-select form-control">
+                <option>Сортировка</option>
+                <option>По дате</option>
+                <option>По популярности</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="row" id="article-list">
+        <!-- Articles will be shown here via JS -->
+    </div>
+
+    <nav aria-label="Pagination">
+        <ul class="pagination justify-content-center" id="pagination">
+            <!-- Pagination links via JS -->
+        </ul>
+    </nav>
+</div>
+
+<!-- Footer -->
+<footer class="footer">
+    <div class="container">
+        <p>Руденко А.Е.</p>
+    </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+<script>
+    const articles = [
+        { id: 1, title: 'Обзор iPhone 15', img: 'img/iphone.jpg', link: 'article.html' },
+        { id: 2, title: 'Samsung Galaxy S24', img: 'img/samsung.jpg', link: '#' },
+        { id: 3, title: 'Google Pixel 8', img: 'img/pixel.jpg', link: '#' },
+        { id: 4, title: 'OnePlus 12', img: 'img/oneplus.jpg', link: '#' },
+        { id: 5, title: 'Xiaomi 14', img: 'img/xiaomi.jpg', link: '#' }
+    ];
+
+    const itemsPerPage = 3;
+    const totalPages = Math.ceil(articles.length / itemsPerPage);
+
+    function showPage(page) {
+        const start = (page - 1) * itemsPerPage;
+        const end = start + itemsPerPage;
+        const pageArticles = articles.slice(start, end);
+
+        const articleList = document.getElementById('article-list');
+        articleList.innerHTML = '';
+        pageArticles.forEach(article => {
+            const col = document.createElement('div');
+            col.className = 'col-md-4 mb-4';
+            col.innerHTML = `
+                <div class="card">
+                    <img src="${article.img}" class="card-img-top" alt="${article.title}">
+                    <div class="card-body text-center">
+                        <h5 class="card-title">${article.title}</h5>
+                        <a href="${article.link}" class="btn">Читать</a>
+                    </div>
+                </div>
+            `;
+            articleList.appendChild(col);
+        });
+    }
+
+    function setupPagination() {
+        const pagination = document.getElementById('pagination');
+        pagination.innerHTML = '';
+        for (let i = 1; i <= totalPages; i++) {
+            const li = document.createElement('li');
+            li.className = 'page-item';
+            li.innerHTML = `<a class="page-link" href="#" data-page="${i}">${i}</a>`;
+            pagination.appendChild(li);
+        }
+
+        pagination.addEventListener('click', (e) => {
+            if (e.target.tagName === 'A') {
+                e.preventDefault();
+                const page = parseInt(e.target.dataset.page);
+                showPage(page);
+                [...pagination.querySelectorAll('.page-item')].forEach(item => item.classList.remove('active'));
+                e.target.parentElement.classList.add('active');
+            }
+        });
+
+        pagination.querySelector('.page-item:first-child').classList.add('active');
+        showPage(1);
+    }
+
+    setupPagination();
+</script>
+</body>
+</html>

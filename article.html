@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Обзор iPhone 15 - Гаджет Блог</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <style>
+        body {
+            background-color: #121212;
+            color: #e0e0e0;
+            font-family: 'Arial', sans-serif;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        .navbar {
+            background-color: #1c2526;
+            padding: 10px 0;
+            position: relative;
+        }
+        .navbar-brand {
+            color: #ffffff;
+            font-size: 2.5rem;
+            font-family: 'Arial', sans-serif;
+            text-align: center;
+        }
+        .navbar-brand:hover {
+            color: #ffffff;
+            text-decoration: none;
+        }
+        .navbar-nav {
+            justify-content: center;
+        }
+        .nav-link {
+            color: #ffffff;
+            font-size: 1.1rem;
+            margin: 0 15px;
+            text-transform: uppercase;
+        }
+        .nav-link:hover {
+            color: #bbbbbb;
+        }
+        .img-main {
+            border-radius: 15px;
+            height: 400px;
+            object-fit: cover;
+        }
+        .img-thumbnail {
+            border-radius: 10px;
+            cursor: pointer;
+            width: 100px;
+            height: 100px;
+            object-fit: cover;
+        }
+        .footer {
+            background-color: #1e1e1e;
+            padding: 20px 0;
+            text-align: center;
+            margin-top: auto;
+        }
+        .btn {
+            border-radius: 20px;
+            background-color: #ffc107;
+            border-color: #ffc107;
+            color: #121212;
+        }
+        .btn:hover {
+            background-color: #ffca2c;
+            border-color: #ffca2c;
+        }
+        .form-control {
+            background-color: #333333;
+            border: none;
+            color: #e0e0e0;
+            border-radius: 10px;
+        }
+        .form-control::placeholder {
+            color: #bbbbbb;
+        }
+        .review-card {
+            background-color: #2c2c2c;
+            padding: 15px;
+            border-radius: 15px;
+            border-left: 5px solid #ffc107;
+            text-align: center;
+            width: 80%;
+            margin: 0 auto;
+        }
+        .review-name {
+            font-weight: bold;
+            display: block;
+        }
+        .carousel-item {
+            padding: 20px;
+            transition: transform 0.6s ease;
+        }
+    </style>
+</head>
+<body>
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg">
+    <div class="container d-flex flex-column align-items-center">
+        <span class="navbar-brand mb-3">Гаджет Блог</span>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="index.html">Главная</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="catalog.html">Каталог</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="contacts.html">Контакты</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<!-- Article Content -->
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <img id="main-image" src="img/iphone_black.jpg" class="img-fluid img-main mx-auto d-block" alt="Главное фото">
+        </div>
+    </div>
+    <div class="row justify-content-center mt-3">
+        <div class="col-md-4 d-flex justify-content-around">
+            <img src="img/iphone_black.jpg" class="img-thumbnail" onclick="changeImage(this.src)" alt="Фото 1">
+            <img src="img/iphone_pink.jpg" class="img-thumbnail" onclick="changeImage(this.src)" alt="Фото 2">
+            <img src="img/iphone_yellow.jpg" class="img-thumbnail" onclick="changeImage(this.src)" alt="Фото 3">
+        </div>
+    </div>
+    <div class="mt-4">
+        <h2>Текст</h2>
+        <p>iPhone 15 — это новейший флагман от Apple, представленный в 2023 году. Устройство оснащено мощным процессором A17 Bionic, который обеспечивает невероятную производительность и энергоэффективность. Камера получила улучшения, включая 48-мегапиксельный сенсор, что позволяет делать снимки высочайшего качества даже в условиях слабого освещения. Дизайн стал более эргономичным благодаря закругленным краям и новому цвету — титановому серому. Аккумуляторная батарея теперь поддерживает быструю зарядку до 50% за 30 минут. Среди минусов — отсутствие зарядного устройства в комплекте и высокая цена.</p>
+    </div>
+
+    <!-- Reviews Slider -->
+    <div class="mt-4">
+        <h4>Отзывы</h4>
+        <div id="reviewsCarousel" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <div class="review-card">
+                        <span class="review-name">Иван П.</span>
+                        Отличный телефон! Камера просто супер, а скорость работы поражает. Рекомендую!
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <div class="review-card">
+                        <span class="review-name">Мария К.</span>
+                        Красивый дизайн, но цена кусается. Зарядка могла бы быть быстрее.
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <div class="review-card">
+                        <span class="review-name">Алексей С.</span>
+                        Пользуюсь неделю, всё нравится, особенно экран и автономность.
+                    </div>
+                </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#reviewsCarousel" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#reviewsCarousel" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
+        </div>
+    </div>
+
+    <!-- Form for New Review -->
+    <div class="mt-4">
+        <h4>Оставить отзыв</h4>
+        <form id="reviewForm">
+            <div class="mb-3">
+                <input type="text" class="form-control" id="reviewName" placeholder="Ваше имя" required>
+            </div>
+            <div class="mb-3">
+                <textarea class="form-control" id="reviewText" rows="3" placeholder="Ваш отзыв" required></textarea>
+            </div>
+            <button type="submit" class="btn">Отправить</button>
+        </form>
+    </div>
+</div>
+
+<!-- Footer -->
+<footer class="footer">
+    <div class="container">
+        <p>Руденко А.Е.</p>
+    </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+<script>
+    function changeImage(src) {
+        document.getElementById('main-image').src = src;
+    }
+
+    document.getElementById('reviewForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+        const name = document.getElementById('reviewName').value;
+        const text = document.getElementById('reviewText').value;
+        if (name && text) {
+            const newReview = document.createElement('div');
+            newReview.className = 'carousel-item';
+            newReview.innerHTML = `
+                <div class="review-card">
+                    <span class="review-name">${name}</span>
+                    ${text}
+                </div>
+            `;
+            document.querySelector('#reviewsCarousel .carousel-inner').appendChild(newReview);
+            document.getElementById('reviewName').value = '';
+            document.getElementById('reviewText').value = '';
+            const carousel = new bootstrap.Carousel(document.getElementById('reviewsCarousel'));
+            carousel.to(document.querySelectorAll('.carousel-item').length - 1);
+        }
+    });
+</script>
+</body>
+</html>
