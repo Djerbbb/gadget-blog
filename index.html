@@ -103,16 +103,16 @@
             margin-top: auto;
         }
         .carousel {
-            border-radius: 15px; /* Закругление слайдера */
+            border-radius: 15px; 
             overflow: hidden;
         }
         .carousel-inner {
-            border-radius: 15px; /* Закругление содержимого слайдера */
+            border-radius: 15px; 
         }
         .carousel-item img {
             height: 400px;
             object-fit: cover;
-            border-radius: 15px; /* Закругление изображений */
+            border-radius: 15px; 
         }
         .carousel-caption {
             background-color: rgba(0, 0, 0, 0.8);
@@ -126,7 +126,7 @@
             color: #e0e0e0;
         }
         .carousel-control-prev, .carousel-control-next {
-            background-color: rgba(255, 255, 255, 0.6); /* Изменён фон на светлый для контраста */
+            background-color: rgba(255, 255, 255, 0.6); 
             width: 50px;
             height: 50px;
             border-radius: 50%;
@@ -138,8 +138,24 @@
             background-color: rgba(255, 255, 255, 0.8);
         }
         .carousel-control-prev-icon, .carousel-control-next-icon {
-            filter: brightness(0); /* Чёрные иконки для контраста на светлом фоне */
+            filter: brightness(0); 
         }
+        /* === АНИМАЦИИ === */
+        @keyframes fadeUp {   from { opacity:0; transform:translateY(30px); }   to   { opacity:1; transform:none; } }
+        @keyframes pulse   {   0%,100%{box-shadow:0 0 0 0 #ffc107;} 70%{box-shadow:0 0 0 10px transparent;} }
+        @keyframes slideDown { from { max-height:0; opacity:0; } to { max-height:200px; opacity:1; } }
+        @keyframes title   {   from { letter-spacing:-1em; opacity:0; } to { letter-spacing:normal; opacity:1; } }
+
+        .card { animation: fadeUp 0.6s ease-out forwards; }
+
+        .btn { animation: pulse 2s infinite; }
+
+        #reviewForm { animation: slideDown 0.5s ease-out; }
+
+        .carousel-control-prev:hover .carousel-control-prev-icon { transform:rotate(-15deg); transition:0.3s; }
+        .carousel-control-next:hover .carousel-control-next-icon { transform:rotate(15deg);  transition:0.3s; }
+
+        h1, h2, h5 { animation: title 1s ease-out; }
     </style>
 </head>
 <body>
@@ -167,7 +183,7 @@
     </div>
 </nav>
 
-<!-- Redesigned Slider -->
+<!-- Slider -->
 <div id="newsCarousel" class="carousel slide container mt-5 mb-5" data-bs-ride="true" data-bs-theme="dark">
     <div class="carousel-indicators">
         <button type="button" data-bs-target="#newsCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>

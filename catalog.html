@@ -95,6 +95,22 @@
             background-color: #ffc107;
             color: #121212;
         }
+        /* === АНИМАЦИИ === */
+        @keyframes fadeUp {   from { opacity:0; transform:translateY(30px); }   to   { opacity:1; transform:none; } }
+        @keyframes pulse   {   0%,100%{box-shadow:0 0 0 0 #ffc107;} 70%{box-shadow:0 0 0 10px transparent;} }
+        @keyframes slideDown { from { max-height:0; opacity:0; } to { max-height:200px; opacity:1; } }
+        @keyframes title   {   from { letter-spacing:-1em; opacity:0; } to { letter-spacing:normal; opacity:1; } }
+
+        .card { animation: fadeUp 0.6s ease-out forwards; }
+
+        .btn { animation: pulse 2s infinite; }
+
+        #reviewForm { animation: slideDown 0.5s ease-out; }
+
+        .carousel-control-prev:hover .carousel-control-prev-icon { transform:rotate(-15deg); transition:0.3s; }
+        .carousel-control-next:hover .carousel-control-next-icon { transform:rotate(15deg);  transition:0.3s; }
+
+        h1, h2, h5 { animation: title 1s ease-out; }
     </style>
 </head>
 <body>
