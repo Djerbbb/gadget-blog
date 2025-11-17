@@ -4,7 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Контакты - Гаджет Блог</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootswatch@5.3.3/dist/lux/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
     <style>
         body {
             background-color: #121212;
@@ -41,75 +45,46 @@
         .nav-link:hover {
             color: #bbbbbb;
         }
-        .btn {
+
+        .info-block {
+            background: linear-gradient(135deg, #1e1e1e, #2c2c2c);
+            padding: 30px;
             border-radius: 20px;
-            background-color: #ffc107;
-            border-color: #ffc107;
-            color: #121212;
-        }
-        .btn:hover {
-            background-color: #ffca2c;
-            border-color: #ffca2c;
-        }
-        .form-control {
-            background-color: #333333;
-            border: none;
-            color: #e0e0e0;
-            border-radius: 10px;
-        }
-        .form-control::placeholder {
-            color: #bbbbbb;
-        }
-        .form-control:focus {
-            background-color: #333333;
-            color: #e0e0e0;
-            box-shadow: none;
-        }
-        .footer {
-            background-color: #1e1e1e;
-            padding: 20px 0;
-            text-align: center;
-            margin-top: auto;
+            border-left: 6px solid #ffc107;
+            box-shadow: 0 10px 30px rgba(255,193,7,0.15);
         }
         .map-container {
-            background-color: #2c2c2c;
-            padding: 10px;
-            border-radius: 15px;
-            margin-bottom: 20px;
-            border: 1px solid #ffc107;
+            border-radius: 20px;
+            overflow: hidden;
+            border: 3px solid #ffc107;
+            box-shadow: 0 15px 40px rgba(255,193,7,0.2);
         }
-        .map-container a:hover {
-            color: #ddd;
+        .btn {
+            border-radius: 50px;
+            padding: 0.8rem 2.5rem;
+            font-weight: 600;
+            transition: all 0.3s;
         }
-        .info-block {
+        .form-control, .form-control:focus {
+            background-color: #333;
+            border: none;
+            border-radius: 12px;
+            color: #e0e0e0;
+        }
+        .form-control::placeholder { color: #bbbbbb; }
+
+        .footer {
             background-color: #1e1e1e;
-            padding: 20px;
-            border-radius: 15px;
-            margin-bottom: 20px;
-            border-left: 5px solid #ffc107;
+            padding: 25px 0;
+            margin-top: auto;
         }
-        /* === АНИМАЦИИ === */
-        @keyframes fadeUp {   from { opacity:0; transform:translateY(30px); }   to   { opacity:1; transform:none; } }
-        @keyframes pulse   {   0%,100%{box-shadow:0 0 0 0 #ffc107;} 70%{box-shadow:0 0 0 10px transparent;} }
-        @keyframes slideDown { from { max-height:0; opacity:0; } to { max-height:200px; opacity:1; } }
-        @keyframes title   {   from { letter-spacing:-1em; opacity:0; } to { letter-spacing:normal; opacity:1; } }
-
-        .card { animation: fadeUp 0.6s ease-out forwards; }
-
+        @keyframes pulse { 0%,100%{box-shadow:0 0 0 0 #ffc107;} 70%{box-shadow:0 0 0 15px transparent;} }
         .btn { animation: pulse 2s infinite; }
-
-        #reviewForm { animation: slideDown 0.5s ease-out; }
-
-        .carousel-control-prev:hover .carousel-control-prev-icon { transform:rotate(-15deg); transition:0.3s; }
-        .carousel-control-next:hover .carousel-control-next-icon { transform:rotate(15deg);  transition:0.3s; }
-
-        h1, h2, h5 { animation: title 1s ease-out; }
     </style>
 </head>
 <body>
 
-<!-- Navbar -->
-<nav class="navbar navbar-expand-lg">
+<nav class="navbar navbar-expand-lg" data-aos="fade-down">
     <div class="container d-flex flex-column align-items-center">
         <span class="navbar-brand mb-3">Гаджет Блог</span>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -124,54 +99,61 @@
                     <a class="nav-link" href="catalog.html">Каталог</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="contacts.html">Контакты</a>
+                    <a class="nav-link active text-warning fw-bold" href="contacts.html">Контакты</a>
                 </li>
             </ul>
         </div>
     </div>
 </nav>
 
-<!-- Contacts Content -->
-<div class="container mt-5">
-    <!-- Info Block -->
-    <div class="info-block">
-        <h4>Наша контактная информация</h4>
-        <p>Телефон: +7 (495) 123-45-67</p>
-        <p>Почта: info@gadgetblog.ru</p>
-        <p>Адрес: Москва, Красная площадь, д. 1</p>
+<div class="container mt-5 pb-5">
+    <div class="info-block mb-5" data-aos="fade-up">
+        <h4 class="text-warning mb-4"><i class="bi bi-telephone-fill me-2"></i>Наша контактная информация</h4>
+        <p class="mb-2"><i class="bi bi-telephone me-3"></i>Телефон: +7 (495) 123-45-67</p>
+        <p class="mb-2"><i class="bi bi-envelope me-3"></i>Почта: info@gadgetblog.ru</p>
+        <p class="mb-0"><i class="bi bi-geo-alt me-3"></i>Адрес: Москва, Красная площадь, д. 1</p>
     </div>
 
-    <h4>Связаться с нами</h4>
-    <form>
-        <div class="mb-3">
-            <input type="text" class="form-control" placeholder="Ваше имя">
-        </div>
-        <div class="mb-3">
-            <input type="email" class="form-control" placeholder="Эл.почта">
-        </div>
-        <div class="mb-3">
-            <input type="text" class="form-control" placeholder="Ваше сообщение">
-        </div>
-        <button type="submit" class="btn">Отправить</button>
-    </form>
+    <div data-aos="fade-up" data-aos-delay="200">
+        <h4 class="text-warning mb-4 text-center"><i class="bi bi-chat-dots-fill me-2"></i>Связаться с нами</h4>
+        <form class="col-lg-8 mx-auto">
+            <div class="mb-3">
+                <input type="text" class="form-control form-control-lg" placeholder="Ваше имя" required>
+            </div>
+            <div class="mb-3">
+                <input type="email" class="form-control form-control-lg" placeholder="Эл. почта" required>
+            </div>
+            <div class="mb-4">
+                <textarea class="form-control form-control-lg" rows="5" placeholder="Ваше сообщение" required></textarea>
+            </div>
+            <div class="text-center">
+                <button type="submit" class="btn btn-warning btn-lg">Отправить сообщение</button>
+            </div>
+        </form>
+    </div>
 
-    <h4 class="mt-5">Наш офис</h4>
-    <div class="map-container">
-        <div style="position:relative;overflow:hidden;border-radius:15px;">
-            <a href="https://yandex.ru/maps/213/moscow/?utm_medium=mapframe&utm_source=maps" style="color:#bbb;font-size:12px;position:absolute;top:0px;text-decoration:none;">Москва</a>
-            <a href="https://yandex.ru/maps/213/moscow/geo/krasnaya_ploshchad/1520633025/?indoorLevel=1&ll=37.620941%2C55.753575&utm_medium=mapframe&utm_source=maps&z=17.08" style="color:#bbb;font-size:12px;position:absolute;top:14px;text-decoration:none;">Красная площадь — Яндекс Карты</a>
-            <iframe src="https://yandex.ru/map-widget/v1/?indoorLevel=1&ll=37.620941%2C55.753575&mode=search&ol=geo&ouri=ymapsbm1%3A%2F%2Fgeo%3Fdata%3DCgoxNTIwNjMzMDI1EjnQoNC-0YHRgdC40Y8sINCc0L7RgdC60LLQsCwg0JrRgNCw0YHQvdCw0Y8g0L_Qu9C-0YnQsNC00YwiCg0dfBZCFaIDX0I%2C&z=17.08" width="100%" height="400" frameborder="0" allowfullscreen="true" style="position:relative;border-radius:15px;"></iframe>
+    <div class="mt-5" data-aos="fade-up" data-aos-delay="400">
+        <h4 class="text-warning mb-4 text-center"><i class="bi bi-geo-alt-fill me-2"></i>Наш офис на карте</h4>
+        <div class="map-container">
+            <iframe src="https://yandex.ru/map-widget/v1/?indoorLevel=1&ll=37.620941%2C55.753575&mode=search&ol=geo&ouri=ymapsbm1%3A%2F%2Fgeo%3Fdata%3DCgoxNTIwNjMzMDI1EjnQoNC-0YHRgdC40Y8sINCc0L7RgdC60LLQsCwg0JrRgNCw0YHQvdCw0Y8g0L_Qu9C-0YnQsNC00YwiCg0dfBZCFaIDX0I%2C&z=17.08" width="100%" height="450" frameborder="0" allowfullscreen="true" style="position:relative;"></iframe>
         </div>
     </div>
 </div>
 
-<!-- Footer -->
-<footer class="footer">
+<footer class="footer" data-aos="fade-up">
     <div class="container">
-        <p>Руденко А.Е.</p>
+        <p class="mb-0">© Руденко А.Е. 2025</p>
     </div>
 </footer>
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+    AOS.init({
+        duration: 900,
+        once: true,
+        offset: 100
+    });
+</script>
 </body>
 </html>

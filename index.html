@@ -4,7 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Гаджет Блог</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootswatch@5.3.3/dist/lux/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
     <style>
         body {
             background-color: #121212;
@@ -140,28 +144,22 @@
         .carousel-control-prev-icon, .carousel-control-next-icon {
             filter: brightness(0); 
         }
-        /* === АНИМАЦИИ === */
         @keyframes fadeUp {   from { opacity:0; transform:translateY(30px); }   to   { opacity:1; transform:none; } }
         @keyframes pulse   {   0%,100%{box-shadow:0 0 0 0 #ffc107;} 70%{box-shadow:0 0 0 10px transparent;} }
         @keyframes slideDown { from { max-height:0; opacity:0; } to { max-height:200px; opacity:1; } }
         @keyframes title   {   from { letter-spacing:-1em; opacity:0; } to { letter-spacing:normal; opacity:1; } }
 
         .card { animation: fadeUp 0.6s ease-out forwards; }
-
         .btn { animation: pulse 2s infinite; }
-
         #reviewForm { animation: slideDown 0.5s ease-out; }
-
         .carousel-control-prev:hover .carousel-control-prev-icon { transform:rotate(-15deg); transition:0.3s; }
         .carousel-control-next:hover .carousel-control-next-icon { transform:rotate(15deg);  transition:0.3s; }
-
         h1, h2, h5 { animation: title 1s ease-out; }
     </style>
 </head>
 <body>
 
-<!-- Navbar -->
-<nav class="navbar navbar-expand-lg">
+<nav class="navbar navbar-expand-lg" data-aos="fade-down">
     <div class="container d-flex flex-column align-items-center">
         <span class="navbar-brand mb-3">Гаджет Блог</span>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -170,7 +168,7 @@
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link" href="index.html">Главная</a>
+                    <a class="nav-link active text-warning fw-bold" href="index.html">Главная</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="catalog.html">Каталог</a>
@@ -183,8 +181,7 @@
     </div>
 </nav>
 
-<!-- Slider -->
-<div id="newsCarousel" class="carousel slide container mt-5 mb-5" data-bs-ride="true" data-bs-theme="dark">
+<div id="newsCarousel" class="carousel slide container mt-5 mb-5" data-bs-ride="true" data-bs-theme="dark" data-aos="fade-up">
     <div class="carousel-indicators">
         <button type="button" data-bs-target="#newsCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
         <button type="button" data-bs-target="#newsCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
@@ -223,23 +220,22 @@
     </button>
 </div>
 
-<!-- Content -->
 <div class="container">
-    <div class="hero">
-        <h1>Глубокие обзоры смартфонов и гаджетов</h1>
+    <div class="hero" data-aos="zoom-in">
+        <h1 class="text-warning">Глубокие обзоры смартфонов и гаджетов</h1>
         <p>Актуальные обзоры и мнения о самых интересных устройствах нашего времени.</p>
     </div>
 
     <div class="row mt-5">
-        <div class="col-md-4">
+        <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
             <div class="card section-bg">
                 <div class="card-body">
                     <h5 class="card-title">Кто мы такие?</h5>
-                    <p class="card-text">Мы команда энтузиастов, посвятившая себя обзорам гаджетов. Наша миссия — помочь вам разобраться в мире технологий. Мы тестируем устройства, анализируем их плюсы и минусы, чтобы вы могли принять обоснованное решение.</p>
+                    <p class="card-text">Мы команда энтузиастов, посвятившая себя обзорам гаджетов. Наша миссия — помочь вам разобраться в мире технологий. Мы анализируем плюсы и минусы устройства, чтобы вы могли принять решение.</p>
                 </div>
             </div>
         </div>
-        <div class="col-md-4">
+        <div class="col-md-4" data-aos="fade-up" data-aos-delay="300">
             <div class="card section-bg">
                 <div class="card-body">
                     <h5 class="card-title">Наши цели</h5>
@@ -247,7 +243,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-md-4">
+        <div class="col-md-4" data-aos="fade-up" data-aos-delay="500">
             <div class="card section-bg">
                 <div class="card-body">
                     <h5 class="card-title">Что вы найдёте у нас?</h5>
@@ -262,13 +258,21 @@
     </div>
 </div>
 
-<!-- Footer -->
-<footer class="footer">
+<footer class="footer" data-aos="fade-up">
     <div class="container">
         <p>Руденко А.Е.</p>
     </div>
 </footer>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+    AOS.init({
+        duration: 800,
+        once: true,
+        offset: 100
+    });
+</script>
 </body>
 </html>

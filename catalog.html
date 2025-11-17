@@ -4,7 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Каталог - Гаджет Блог</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootswatch@5.3.3/dist/lux/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
     <style>
         body {
             background-color: #121212;
@@ -53,6 +57,12 @@
             border: none;
             border-radius: 15px;
             color: #e0e0e0;
+            transition: all 0.4s;
+            box-shadow: 0 8px 25px rgba(255,193,7,0.1);
+        }
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(255,193,7,0.25);
         }
         .card-img-top {
             border-top-left-radius: 15px;
@@ -71,7 +81,7 @@
             background-color: #ffca2c;
             border-color: #ffca2c;
         }
-        .form-control {
+        .form-control, .form-select {
             background-color: #333333;
             border: none;
             color: #e0e0e0;
@@ -90,33 +100,33 @@
             background-color: #2c2c2c;
             color: #e0e0e0;
             border: none;
+            border-radius: 0.375rem;
+            margin: 0 3px;
         }
         .pagination .page-item.active .page-link {
             background-color: #ffc107;
             color: #121212;
         }
-        /* === АНИМАЦИИ === */
-        @keyframes fadeUp {   from { opacity:0; transform:translateY(30px); }   to   { opacity:1; transform:none; } }
-        @keyframes pulse   {   0%,100%{box-shadow:0 0 0 0 #ffc107;} 70%{box-shadow:0 0 0 10px transparent;} }
+        .pagination .page-item:first-child .page-link {
+            border-top-left-radius: 0.375rem;
+            border-bottom-left-radius: 0.375rem;
+        }
+        .pagination .page-item:last-child .page-link {
+            border-top-right-radius: 0.375rem;
+            border-bottom-right-radius: 0.375rem;
+        }
+        @keyframes fadeUp { from { opacity:0; transform:translateY(30px); } to { opacity:1; transform:none; } }
+        @keyframes pulse   { 0%,100%{box-shadow:0 0 0 0 #ffc107;} 70%{box-shadow:0 0 0 10px transparent;} }
         @keyframes slideDown { from { max-height:0; opacity:0; } to { max-height:200px; opacity:1; } }
-        @keyframes title   {   from { letter-spacing:-1em; opacity:0; } to { letter-spacing:normal; opacity:1; } }
-
-        .card { animation: fadeUp 0.6s ease-out forwards; }
+        @keyframes title   { from { letter-spacing:-1em; opacity:0; } to { letter-spacing:normal; opacity:1; } }
 
         .btn { animation: pulse 2s infinite; }
-
-        #reviewForm { animation: slideDown 0.5s ease-out; }
-
-        .carousel-control-prev:hover .carousel-control-prev-icon { transform:rotate(-15deg); transition:0.3s; }
-        .carousel-control-next:hover .carousel-control-next-icon { transform:rotate(15deg);  transition:0.3s; }
-
         h1, h2, h5 { animation: title 1s ease-out; }
     </style>
 </head>
 <body>
 
-<!-- Navbar -->
-<nav class="navbar navbar-expand-lg">
+<nav class="navbar navbar-expand-lg" data-aos="fade-down">
     <div class="container d-flex flex-column align-items-center">
         <span class="navbar-brand mb-3">Гаджет Блог</span>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -128,7 +138,7 @@
                     <a class="nav-link" href="index.html">Главная</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="catalog.html">Каталог</a>
+                    <a class="nav-link active text-warning fw-bold" href="catalog.html">Каталог</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="contacts.html">Контакты</a>
@@ -138,41 +148,45 @@
     </div>
 </nav>
 
-<!-- Catalog Content -->
 <div class="container mt-5">
-    <div class="row mb-4">
+    <div class="row mb-4" data-aos="fade-up">
         <div class="col-md-6">
-            <input type="text" class="form-control" placeholder="Поиск">
+            <input type="text" class="form-control" placeholder="Поиск по названию...">
         </div>
         <div class="col-md-6">
             <select class="form-select form-control">
                 <option>Сортировка</option>
-                <option>По дате</option>
+                <option>По дате (новые)</option>
                 <option>По популярности</option>
             </select>
         </div>
     </div>
 
     <div class="row" id="article-list">
-        <!-- Articles will be shown here via JS -->
     </div>
 
     <nav aria-label="Pagination">
         <ul class="pagination justify-content-center" id="pagination">
-            <!-- Pagination links via JS -->
         </ul>
     </nav>
 </div>
 
-<!-- Footer -->
-<footer class="footer">
+<footer class="footer" data-aos="fade-up">
     <div class="container">
         <p>Руденко А.Е.</p>
     </div>
 </footer>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 <script>
+    AOS.init({
+        duration: 800,
+        once: true,
+        offset: 80
+    });
+
     const articles = [
         { id: 1, title: 'Обзор iPhone 15', img: 'img/iphone.jpg', link: 'article.html' },
         { id: 2, title: 'Samsung Galaxy S24', img: 'img/samsung.jpg', link: '#' },
@@ -191,20 +205,23 @@
 
         const articleList = document.getElementById('article-list');
         articleList.innerHTML = '';
-        pageArticles.forEach(article => {
+        pageArticles.forEach((article, index) => {
             const col = document.createElement('div');
             col.className = 'col-md-4 mb-4';
+            col.setAttribute('data-aos', 'fade-up');
+            col.setAttribute('data-aos-delay', (index * 200));
             col.innerHTML = `
-                <div class="card">
+                <div class="card h-100">
                     <img src="${article.img}" class="card-img-top" alt="${article.title}">
-                    <div class="card-body text-center">
-                        <h5 class="card-title">${article.title}</h5>
-                        <a href="${article.link}" class="btn">Читать</a>
+                    <div class="card-body text-center d-flex flex-column">
+                        <h5 class="card-title mt-auto">${article.title}</h5>
+                        <a href="${article.link}" class="btn mt-3">Читать</a>
                     </div>
                 </div>
             `;
             articleList.appendChild(col);
         });
+        AOS.refresh(); 
     }
 
     function setupPagination() {
